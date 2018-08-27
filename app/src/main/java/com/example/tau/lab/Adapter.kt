@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.tau.lab.model.Animal
 import java.util.ArrayList
 
 class Adapter(

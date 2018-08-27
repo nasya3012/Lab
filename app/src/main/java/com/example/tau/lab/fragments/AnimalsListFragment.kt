@@ -1,4 +1,4 @@
-package com.example.tau.lab
+package com.example.tau.lab.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.tau.lab.Adapter
+import com.example.tau.lab.CustomLinearLayoutManager
+import com.example.tau.lab.R
+import com.example.tau.lab.model.Animal
 
 class AnimalsListFragment : Fragment() {
 
@@ -31,7 +35,7 @@ class AnimalsListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = Adapter(Animal.getMock(), listener)
+        adapter = Adapter(Animal.getMockMammals(), listener)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,6 +56,6 @@ class AnimalsListFragment : Fragment() {
 
 
     companion object {
-        const val FRAGMENT_TAG = "com.example.tau.lab.AnimalsListFragment"
+        const val FRAGMENT_TAG = "com.example.tau.lab.fragments.AnimalsListFragment"
     }
 }

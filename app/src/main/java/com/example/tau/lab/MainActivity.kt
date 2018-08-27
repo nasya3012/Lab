@@ -3,6 +3,9 @@ package com.example.tau.lab
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.tau.lab.fragments.AnimalFragment
+import com.example.tau.lab.fragments.AnimalsListFragment
+import com.example.tau.lab.model.Animal
 
 class MainActivity : AppCompatActivity(),
         ButtonsFragment.Listener,

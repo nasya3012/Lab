@@ -1,4 +1,4 @@
-package com.example.tau.lab
+package com.example.tau.lab.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.tau.lab.R
+import com.example.tau.lab.model.Animal
 
 class AnimalFragment : Fragment() {
 
@@ -45,10 +47,10 @@ class AnimalFragment : Fragment() {
 
 
     companion object {
-        const val FRAGMENT_TAG = "com.example.tau.lab.AnimalFragment"
+        const val FRAGMENT_TAG = "com.example.tau.lab.fragments.AnimalFragment"
         private const val ANIMAL = "animal"
 
-        fun newInstance(animal: Animal): AnimalFragment{
+        fun newInstance(animal: Animal): AnimalFragment {
             val fragment = AnimalFragment()
             val findings = Bundle()
             findings.putParcelable(ANIMAL, animal)
