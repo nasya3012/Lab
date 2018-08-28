@@ -7,11 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.example.tau.lab.model.Animal
 import java.util.ArrayList
 
@@ -26,25 +21,11 @@ class Adapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val animal = animals!![position]
         holder.root.setOnClickListener { listener?.animalClicked(animal) }
-        if (holder.image != null) {
-            Glide.with(holder.context)
-                    .load(animal.animalPicture)
-                    .apply(createOptions())
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(holder.image)
-        }
+        if (holder.image != null) ImageUtils.processAnimalImage(animal, holder.image, false)
         holder.text?.text = animal.animalName
     }
 
-    override fun getItemCount(): Int = animals?.size?: 0
-
-    private fun createOptions(): RequestOptions {
-        return RequestOptions()
-                .error(R.drawable.donno)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .priority(Priority.NORMAL)
-    }
-
+    override fun getItemCount(): Int = animals?.size ?: 0
 
     interface Listener {
         fun animalClicked(animal: Animal)
@@ -52,6 +33,10 @@ class Adapter(
 
 
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
+        object animals {
+
+        }
+
         val context: Context
             get() = root.context
         val image: ImageView? = root.findViewById(R.id.animalPicture)

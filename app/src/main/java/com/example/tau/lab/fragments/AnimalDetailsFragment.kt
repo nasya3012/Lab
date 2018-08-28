@@ -2,17 +2,12 @@ package com.example.tau.lab.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.widget.CircularProgressDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
+import com.example.tau.lab.ImageUtils
 import com.example.tau.lab.R
 import com.example.tau.lab.model.Animal
 
@@ -46,23 +41,10 @@ class AnimalDetailsFragment : Fragment() {
     }
 
     private fun setUpUi() {
-        if (animalPictureIV != null && context != null) {
-            Glide.with(context)
-                    .load(animal?.animalPicture)
-                    .apply(createOptions())
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(animalPictureIV)
-        }
+        if (animalPictureIV != null && context != null && animal != null)
+            ImageUtils.processAnimalImage(animal!!, animalPictureIV!!, false)
         animalNameTV?.text = animal?.animalName
     }
-
-    private fun createOptions(): RequestOptions {
-        return RequestOptions()
-                .error(R.drawable.donno)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .priority(Priority.NORMAL)
-    }
-
 
     companion object {
         const val FRAGMENT_TAG = "com.example.tau.lab.fragments.AnimalDetailsFragment"
