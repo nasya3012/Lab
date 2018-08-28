@@ -27,10 +27,10 @@ class Animal(
 
         fun getMockMammals(): ArrayList<Animal> {
             return arrayListOf(
-                    Animal("Кенгуру", "http://tuzikgreet.ru/i/files/news/_nw/51/s17217258.jpg"),
+                    Animal("Кенгуру", "https://b1.filmpro.ru/c/124643.jpg"),
                     Animal("Ёж", "http://nibler.ru/uploads/users/2013-07-09/fotopodborka-zabavnaya-krasivye-fotografii-neobychnye-fotografii_699180234.jpg"),
                     Animal("Слон", "https://mtdata.ru/u23/photo5E37/20632067406-0/original.jpg"),
-                    Animal("Сурикат", "https://i.ytimg.com/vi/P0iAG_TqPNI/maxresdefault.jpg"),
+                    Animal("Сурикат", "http://100mir.ru/d/surikat.jpg"),
                     Animal("Енот", "https://mardentro.ru/wp-content/uploads/2016/08/dieta.jpg")
             )
         }

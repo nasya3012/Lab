@@ -5,22 +5,20 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    tools:context=".ButtonsFragment">
+    tools:context=".fragments.ButtonsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/showToast"
-            tools:text="@string/show_toast"
+            android:id="@+id/button1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/showAnimalsList"
-            android:text="@string/list_animals"
+            android:id="@+id/button2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
@@ -29,5 +27,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorBlack"/>
+        android:background="@color/colorGrey"/>
 </LinearLayout>

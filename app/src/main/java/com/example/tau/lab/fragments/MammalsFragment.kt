@@ -12,7 +12,7 @@ import com.example.tau.lab.CustomLinearLayoutManager
 import com.example.tau.lab.R
 import com.example.tau.lab.model.Animal
 
-class AnimalsListFragment : Fragment() {
+class MammalsFragment : Fragment() {
 
     private var adapter: Adapter? = null
     private var listView: RecyclerView? = null
@@ -39,7 +39,7 @@ class AnimalsListFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_animals_list, container, false)
+        val root = inflater.inflate(R.layout.fragment_mammals, container, false)
         listView = root.findViewById(R.id.animalsList)
         initList()
         return root
@@ -56,6 +56,6 @@ class AnimalsListFragment : Fragment() {
 
 
     companion object {
-        const val FRAGMENT_TAG = "com.example.tau.lab.fragments.AnimalsListFragment"
+        const val FRAGMENT_TAG = "com.example.tau.lab.fragments.MammalsFragment"
     }
 }

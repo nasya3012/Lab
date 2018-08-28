@@ -1,4 +1,4 @@
-package com.example.tau.lab
+package com.example.tau.lab.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.tau.lab.R
 
 class ButtonsFragment : Fragment() {
 
-    private var buttonText: String? = null
+    private var button1Text: String? = null
+    private var button2Text: String? = null
     private var listener: Listener? = null
 
 
@@ -30,31 +32,38 @@ class ButtonsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let { buttonText = it.getString(BUTTON_TEXT) }
+        arguments?.let {
+            button1Text = it.getString(BUTTON_1_TEXT)
+            button2Text = it.getString(BUTTON_2_TEXT)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_buttons, container, false)
-        val showToast = root.findViewById<TextView>(R.id.showToast)
-        showToast?.text = buttonText
-        showToast?.setOnClickListener{listener?.showToast()}
-        root.findViewById<View>(R.id.showAnimalsList)?.setOnClickListener{listener?.showAnimalsList()}
+        val button1 = root.findViewById<TextView>(R.id.button1)
+        button1?.text = button1Text
+        button1?.setOnClickListener{listener?.showMammals()}
+        val button2 = root.findViewById<TextView>(R.id.button2)
+        button2?.text = button2Text
+        button2?.setOnClickListener{listener?.showBirds()}
         return root
     }
 
     interface Listener{
-        fun showToast()
-        fun showAnimalsList()
+        fun showMammals()
+        fun showBirds()
     }
 
     companion object {
-        const val FRAGMENT_TAG = "com.example.tau.lab.ButtonsFragment"
-        private const val BUTTON_TEXT = "BUTTON_TEXT"
+        const val FRAGMENT_TAG = "com.example.tau.lab.fragments.ButtonsFragment"
+        private const val BUTTON_1_TEXT = "BUTTON_1_TEXT"
+        private const val BUTTON_2_TEXT = "BUTTON_2_TEXT"
 
-        fun newInstance(buttonText: String): ButtonsFragment{
+        fun newInstance(button1Text: String, button2Text: String): ButtonsFragment {
             val fragment = ButtonsFragment()
             val findings = Bundle()
-            findings.putString(BUTTON_TEXT, buttonText)
+            findings.putString(BUTTON_1_TEXT, button1Text)
+            findings.putString(BUTTON_2_TEXT, button2Text)
             fragment.arguments = findings
             return fragment
         }
