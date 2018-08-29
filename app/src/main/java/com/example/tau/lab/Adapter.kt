@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.tau.lab.model.Animal
-import java.util.ArrayList
+import java.util.*
 
 class Adapter(
         private var animals: ArrayList<Animal>?,
@@ -27,16 +27,19 @@ class Adapter(
 
     override fun getItemCount(): Int = animals?.size ?: 0
 
+    fun updateContent(animals: ArrayList<Animal>?) {
+        this.animals = animals
+        notifyDataSetChanged()
+    }
+
+
     interface Listener {
         fun animalClicked(animal: Animal)
     }
 
 
+
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
-        object animals {
-
-        }
-
         val context: Context
             get() = root.context
         val image: ImageView? = root.findViewById(R.id.animalPicture)

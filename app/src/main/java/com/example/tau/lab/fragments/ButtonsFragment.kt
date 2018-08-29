@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.tau.lab.AnimalType
 import com.example.tau.lab.R
 
 class ButtonsFragment : Fragment() {
@@ -42,16 +43,15 @@ class ButtonsFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_buttons, container, false)
         val button1 = root.findViewById<TextView>(R.id.button1)
         button1?.text = button1Text
-        button1?.setOnClickListener{listener?.showMammals()}
+        button1?.setOnClickListener{listener?.showList(AnimalType.MAMMAL)}
         val button2 = root.findViewById<TextView>(R.id.button2)
         button2?.text = button2Text
-        button2?.setOnClickListener{listener?.showBirds()}
+        button2?.setOnClickListener{listener?.showList(AnimalType.BIRD)}
         return root
     }
 
     interface Listener{
-        fun showMammals()
-        fun showBirds()
+        fun showList(animalType: AnimalType)
     }
 
     companion object {

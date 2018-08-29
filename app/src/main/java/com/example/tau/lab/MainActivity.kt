@@ -2,15 +2,14 @@ package com.example.tau.lab
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.tau.lab.fragments.AnimalDetailsFragment
-import com.example.tau.lab.fragments.MammalsFragment
+import com.example.tau.lab.fragments.ListFragment
 import com.example.tau.lab.fragments.ButtonsFragment
 import com.example.tau.lab.model.Animal
 
 class MainActivity : AppCompatActivity(),
         ButtonsFragment.Listener,
-        MammalsFragment.Listener {
+        ListFragment.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,19 +20,18 @@ class MainActivity : AppCompatActivity(),
                 .commit()
     }
 
-    override fun showMammals() {
-        val mammalsFragment = supportFragmentManager.findFragmentByTag(MammalsFragment.FRAGMENT_TAG)
-        if (mammalsFragment != null) return
-        val animalDetailsFragment = supportFragmentManager.findFragmentByTag(AnimalDetailsFragment.FRAGMENT_TAG)
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.animalsFrame, MammalsFragment(), MammalsFragment.FRAGMENT_TAG)
-        if (animalDetailsFragment != null) transaction.remove(animalDetailsFragment)
-        transaction.addToBackStack(MammalsFragment.FRAGMENT_TAG)
-        transaction.commit()
-    }
-
-    override fun showBirds() {
-        Toast.makeText(this,"showBirds clicked", Toast.LENGTH_SHORT).show()
+    override fun showList(animalType: AnimalType) {
+        val listFragment = supportFragmentManager.findFragmentByTag(ListFragment.FRAGMENT_TAG) as ListFragment?
+        if (listFragment != null) {
+            listFragment.updateContent(animalType)
+            val animalDetailsFragment = supportFragmentManager.findFragmentByTag(AnimalDetailsFragment.FRAGMENT_TAG)
+            if (animalDetailsFragment != null) supportFragmentManager.popBackStack()
+        } else {
+            supportFragmentManager.beginTransaction()
+                    .add(R.id.animalsFrame, ListFragment.newInstance(animalType), ListFragment.FRAGMENT_TAG)
+                    .addToBackStack(ListFragment.FRAGMENT_TAG)
+                    .commit()
+        }
     }
 
     override fun animalClicked(animal: Animal) {
