@@ -1,19 +1,25 @@
-package com.example.tau.lab
+package com.example.tau.lab.activities
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tau.lab.AnimalType
+import com.example.tau.lab.R
 import com.example.tau.lab.fragments.AnimalDetailsFragment
 import com.example.tau.lab.fragments.ListFragment
 import com.example.tau.lab.fragments.ButtonsFragment
 import com.example.tau.lab.model.Animal
 
-class MainActivity : AppCompatActivity(),
+class ButtonsActivity : AppCompatActivity(),
         ButtonsFragment.Listener,
         ListFragment.Listener {
 
+    private var listFragment: ListFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_buttons)
         val fragment = ButtonsFragment.newInstance(getString(R.string.mammals), getString(R.string.birds))
         supportFragmentManager.beginTransaction()
                 .add(R.id.buttonsFrame, fragment, ButtonsFragment.FRAGMENT_TAG)
@@ -21,14 +27,14 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun showList(animalType: AnimalType) {
-        val listFragment = supportFragmentManager.findFragmentByTag(ListFragment.FRAGMENT_TAG) as ListFragment?
         if (listFragment != null) {
-            listFragment.updateContent(animalType)
+            listFragment!!.updateContent(animalType)
             val animalDetailsFragment = supportFragmentManager.findFragmentByTag(AnimalDetailsFragment.FRAGMENT_TAG)
             if (animalDetailsFragment != null) supportFragmentManager.popBackStack()
         } else {
+            listFragment = ListFragment.newInstance(animalType)
             supportFragmentManager.beginTransaction()
-                    .add(R.id.animalsFrame, ListFragment.newInstance(animalType), ListFragment.FRAGMENT_TAG)
+                    .add(R.id.animalsFrame, listFragment!!, ListFragment.FRAGMENT_TAG)
                     .addToBackStack(ListFragment.FRAGMENT_TAG)
                     .commit()
         }
@@ -43,6 +49,13 @@ class MainActivity : AppCompatActivity(),
                     .add(R.id.animalDetailsFrame, AnimalDetailsFragment.newInstance(animal), AnimalDetailsFragment.FRAGMENT_TAG)
                     .addToBackStack(AnimalDetailsFragment.FRAGMENT_TAG)
                     .commit()
+        }
+    }
+
+    companion object {
+        fun newInstance(context: Context) {
+            val intent = Intent(context, ButtonsActivity::class.java)
+            context.startActivity(intent)
         }
     }
 }

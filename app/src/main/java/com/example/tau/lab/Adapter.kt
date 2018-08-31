@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.tau.lab.model.Animal
+import com.example.tau.lab.util.ImageUtils
 import java.util.*
 
 class Adapter(
@@ -43,6 +44,6 @@ class Adapter(
         val context: Context
             get() = root.context
         val image: ImageView? = root.findViewById(R.id.animalPicture)
-        val text: TextView? = root.findViewById(R.id.text)
+        val text: TextView? = root.findViewById(R.id.animalName)
     }
 }

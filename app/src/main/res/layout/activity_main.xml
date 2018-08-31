@@ -4,22 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/buttonsFrame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <FrameLayout
-        android:id="@+id/animalsFrame"
+    <Button
+        android:id="@+id/openButtonsActivity"
+        android:text="@string/open_buttons_activity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_margin="32dp"/>
 
-    <FrameLayout
-        android:id="@+id/animalDetailsFrame"
+    <Button
+        android:id="@+id/openViewPagerActivity"
+        android:text="@string/open_view_pager_activity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_margin="32dp"/>
 </LinearLayout>

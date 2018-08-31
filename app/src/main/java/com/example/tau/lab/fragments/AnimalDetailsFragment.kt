@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.tau.lab.ImageUtils
+import android.widget.Toast
+import com.example.tau.lab.util.ImageUtils
 import com.example.tau.lab.R
 import com.example.tau.lab.model.Animal
+import java.util.*
 
 class AnimalDetailsFragment : Fragment() {
 
@@ -25,6 +27,13 @@ class AnimalDetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_animal_details, container, false)
+        root.findViewById<View>(R.id.animalPicture).setOnClickListener {
+            if (context != null) {
+                val formatter = getString(R.string.this_is_formatter)
+                val msg = String.format(Locale.getDefault(), formatter, animal?.animalName)
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+            }
+        }
         initUi(root)
         setUpUi()
         return root
