@@ -5,6 +5,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tau.lab.AnimalType
+import com.example.tau.lab.FragmentsCoordinator
+import com.example.tau.lab.FragmentsCoordinatorImpl
 import com.example.tau.lab.R
 import com.example.tau.lab.fragments.AnimalDetailsFragment
 import com.example.tau.lab.fragments.ListFragment
@@ -16,6 +18,8 @@ class ButtonsActivity : AppCompatActivity(),
         ListFragment.Listener {
 
     private var listFragment: ListFragment? = null
+    private var fragmentsCoordinator: FragmentsCoordinator? = null
+    private var animal: Animal? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,7 @@ class ButtonsActivity : AppCompatActivity(),
         supportFragmentManager.beginTransaction()
                 .add(R.id.buttonsFrame, fragment, ButtonsFragment.FRAGMENT_TAG)
                 .commit()
+        fragmentsCoordinator = FragmentsCoordinatorImpl(supportFragmentManager)
     }
 
     override fun showList(animalType: AnimalType) {
@@ -41,15 +46,7 @@ class ButtonsActivity : AppCompatActivity(),
     }
 
     override fun animalClicked(animal: Animal) {
-        val fragment = supportFragmentManager.findFragmentByTag(AnimalDetailsFragment.FRAGMENT_TAG) as AnimalDetailsFragment?
-        if (fragment != null) {
-            fragment.updateContent(animal)
-        } else {
-            supportFragmentManager.beginTransaction()
-                    .add(R.id.animalDetailsFrame, AnimalDetailsFragment.newInstance(animal), AnimalDetailsFragment.FRAGMENT_TAG)
-                    .addToBackStack(AnimalDetailsFragment.FRAGMENT_TAG)
-                    .commit()
-        }
+        fragmentsCoordinator?.showAnimal(animal!!)
     }
 
     companion object {
