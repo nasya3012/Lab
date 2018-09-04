@@ -31,6 +31,9 @@ class ViewPagerActivity : AppCompatActivity(),
         tabLayout?.setupWithViewPager(viewPager)
         viewPager?.adapter = adapter
         fragmentsCoordinator = FragmentsCoordinatorImpl(supportFragmentManager)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(R.string.title_activity_view_pager)
     }
 
     override fun animalClicked(animal: Animal) {

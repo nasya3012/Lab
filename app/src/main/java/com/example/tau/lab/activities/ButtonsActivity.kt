@@ -19,7 +19,6 @@ class ButtonsActivity : AppCompatActivity(),
 
     private var listFragment: ListFragment? = null
     private var fragmentsCoordinator: FragmentsCoordinator? = null
-    private var animal: Animal? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +28,9 @@ class ButtonsActivity : AppCompatActivity(),
                 .add(R.id.buttonsFrame, fragment, ButtonsFragment.FRAGMENT_TAG)
                 .commit()
         fragmentsCoordinator = FragmentsCoordinatorImpl(supportFragmentManager)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(R.string.title_activity_buttons)
     }
 
     override fun showList(animalType: AnimalType) {

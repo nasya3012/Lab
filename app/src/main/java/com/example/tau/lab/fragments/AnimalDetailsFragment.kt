@@ -18,6 +18,7 @@ class AnimalDetailsFragment : Fragment() {
     private var animal: Animal? = null
     private var animalPictureIV: ImageView? = null
     private var animalNameTV: TextView? = null
+    private var animalComment: TextView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,7 @@ class AnimalDetailsFragment : Fragment() {
                 Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
             }
         }
+        animalComment?.setText("Комментарии")
         initUi(root)
         setUpUi()
         return root
@@ -47,6 +49,7 @@ class AnimalDetailsFragment : Fragment() {
     private fun initUi(root: View) {
         animalPictureIV = root.findViewById(R.id.animalPicture)
         animalNameTV = root.findViewById(R.id.animalName)
+        animalComment = root.findViewById(R.id.comment)
     }
 
     private fun setUpUi() {

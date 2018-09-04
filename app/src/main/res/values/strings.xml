@@ -5,6 +5,7 @@
 
     <string name="mammals">Млекопитающие</string>
     <string name="birds">Птицы</string>
+    <string name="animals">Животные</string>
     <string name="types_of_animals">Виды животных</string>
     <string name="open_buttons_activity">Открыть активность с кнопками</string>
     <string name="open_view_pager_activity">Открыть активность с пагинатором</string>
@@ -14,4 +15,7 @@
         <item>Млекопитающие</item>
         <item>Птицы</item>
     </string-array>
+
+    <string name="comment">Введите ваш комментарий</string>
+
 </resources>
