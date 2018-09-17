@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<View>(R.id.openButtonsActivity).setOnClickListener{ButtonsActivity.newInstance(this)}
         findViewById<View>(R.id.openViewPagerActivity).setOnClickListener{ViewPagerActivity.newInstance(this)}
+        findViewById<View>(R.id.openTrafficActivity).setOnClickListener{TrafficActivity.newInstance(this)}
         findViewById<View>(R.id.openButtons).setOnClickListener{ButtonsActivity.newInstance(this)}
         findViewById<View>(R.id.openViewPager).setOnClickListener{ViewPagerActivity.newInstance(this)}
         setSupportActionBar(findViewById(R.id.toolbar))

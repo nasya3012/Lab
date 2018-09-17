@@ -48,7 +48,7 @@ class ButtonsActivity : AppCompatActivity(),
     }
 
     override fun animalClicked(animal: Animal) {
-        fragmentsCoordinator?.showAnimal(animal!!)
+        fragmentsCoordinator?.showAnimal(animal)
     }
 
     companion object {

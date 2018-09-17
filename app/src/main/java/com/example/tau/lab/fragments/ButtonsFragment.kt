@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.tau.lab.AnimalType
 import com.example.tau.lab.R
+import com.example.tau.lab.activities.TrafficActivity
 
 class ButtonsFragment : Fragment() {
 

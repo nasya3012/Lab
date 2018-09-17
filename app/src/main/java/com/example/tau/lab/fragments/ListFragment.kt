@@ -7,10 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.tau.lab.Adapter
-import com.example.tau.lab.AnimalType
-import com.example.tau.lab.CustomLinearLayoutManager
-import com.example.tau.lab.R
+import com.example.tau.lab.*
 import com.example.tau.lab.model.Animal
 
 class ListFragment : Fragment() {
@@ -37,10 +34,10 @@ class ListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {animalType = it.getSerializable(ListFragment.ENUM) as AnimalType}
+        arguments?.let {animalType = it.getSerializable(ListFragment.ANIMAL_TYPE) as AnimalType}
         val animalsList = when (animalType) {
-            AnimalType.MAMMAL -> Animal.getMockMammals()
-            AnimalType.BIRD -> Animal.getMockBirds()
+            AnimalType.MAMMAL -> LabApp.mammals
+            AnimalType.BIRD -> LabApp.birds
             null -> null
         }
         adapter = Adapter(animalsList, listener)
@@ -74,12 +71,12 @@ class ListFragment : Fragment() {
 
     companion object {
         const val FRAGMENT_TAG = "com.example.tau.lab.fragments.ListFragment"
-        private const val ENUM = "enum"
+        private const val ANIMAL_TYPE = "animalType"
 
         fun newInstance(animalType: AnimalType): ListFragment {
             val fragment = ListFragment()
             val type = Bundle()
-            type.putSerializable(ENUM, animalType)
+            type.putSerializable(ANIMAL_TYPE, animalType)
             fragment.arguments = type
             return fragment
         }

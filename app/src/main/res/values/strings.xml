@@ -10,6 +10,17 @@
     <string name="open_buttons_activity">Открыть активность с кнопками</string>
     <string name="open_view_pager_activity">Открыть активность с пагинатором</string>
     <string name="this_is_formatter" formatted="false">Не поверите, но это %s</string>
+    <string name="thanks_for_your_comments">Благодарим за ваши комментарии!!!</string>
+    <string name="attention">Внимание!!!</string>
+    <string name="you_can">Введите комментарий</string>
+    <string name="yes">Да, хочу!</string>
+    <string name="no">Мне нечего добавить</string>
+    <string name="traffic">Светофор</string>
+
+    <string name="red">Красный</string>
+    <string name="yellow">Жёлтый</string>
+    <string name="green">Зелёный</string>
+
 
     <string-array name="page_titles">
         <item>Млекопитающие</item>
