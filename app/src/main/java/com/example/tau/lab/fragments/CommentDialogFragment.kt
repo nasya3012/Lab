@@ -14,14 +14,17 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.EditText
 import com.example.tau.lab.R
-import com.example.tau.lab.activities.MainActivity
 import com.example.tau.lab.model.Animal
+import com.jakewharton.rxbinding2.widget.RxTextView
+import io.reactivex.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
 
 class CommentDialogFragment : DialogFragment() {
 
     private var comment: EditText? = null
     private var animal: Animal? = null
     private var listener: Listener? = null
+    private val commentAnimal = animal?.animalcomment
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -53,20 +56,26 @@ class CommentDialogFragment : DialogFragment() {
         val root = inflater.inflate(R.layout.dialog_comment, container, false)
 
         comment = root.findViewById(R.id.comment)
-        comment?.setText(animal?.animalcomment)
-
-        root.findViewById<View>(R.id.save).setOnClickListener{
-            val commentOld = animal?.animalcomment
-            animal?.animalcomment = comment?.text.toString()
-            Log.v(LOG_TAG, "животное=" + animal?.animalName + ", комментарий: было=" + commentOld
-                    + ", стало=" + animal?.animalcomment)
-            listener?.updateContent()
-        }
+        comment?.setText(commentAnimal)
+        RxTextView.textChanges(comment!!)
+                .debounce(CLICKS_DEBOUNCE_RATE_MS, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(CharSequence::toString)
+                .subscribe({ value -> saveComment() })
+                { throwable -> Log.e(LOG_TAG, "error in comment subscription: " + throwable.localizedMessage) }
 
 //        dismiss возврат, применим только к диалогам
 //        root.findViewById<View>(R.id.buttonNo).setOnClickListener{dismiss()}
 
         return root
+    }
+
+    private fun saveComment() {
+        val commentOld = commentAnimal
+        animal?.animalcomment = comment?.text.toString()
+        Log.v(LOG_TAG, "животное=" + commentAnimal + ", комментарий: было=" + commentOld
+                + ", стало=" + commentAnimal)
+        listener?.updateContent()
     }
 
     override fun onResume() {
@@ -88,6 +97,7 @@ class CommentDialogFragment : DialogFragment() {
         const val FRAGMENT_TAG = "com.example.tau.lab.fragments.CommentDialogFragment"
         private const val LOG_TAG = "CommentDialogFragment"
         private const val ANIMAL = "animal"
+        private const val CLICKS_DEBOUNCE_RATE_MS = 300L
 
         fun showDialog(fragmentManager: FragmentManager, animal: Animal, listener: Listener) {
             val transaction = fragmentManager.beginTransaction()
