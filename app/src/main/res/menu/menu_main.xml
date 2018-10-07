@@ -11,6 +11,11 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/converter"
+        android:title="@string/converter"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/spinner"
         android:title="@string/spinner"
         app:showAsAction="ifRoom"/>

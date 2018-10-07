@@ -16,4 +16,5 @@
     <color name="yellowColor">#FFFF00</color>
     <color name="greenColor">#FF00FF00</color>
     <color name="redColor">#ff0004</color>
+    <color name="activity_color">#3399cc</color>
 </resources>

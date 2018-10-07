@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity() {
             TrafficActivity.newInstance(this)
             true
         }
+        R.id.converter -> {
+            ConverterActivity.newInstance(this)
+            true
+        }
         R.id.spinner -> {
             SpinnerActivity.newInstance(this)
             true

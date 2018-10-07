@@ -15,6 +15,7 @@ import android.view.Window
 import android.widget.EditText
 import com.example.tau.lab.R
 import com.example.tau.lab.model.Animal
+import com.example.tau.lab.util.Constants
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
@@ -58,7 +59,7 @@ class CommentDialogFragment : DialogFragment() {
         comment = root.findViewById(R.id.comment)
         comment?.setText(commentAnimal)
         RxTextView.textChanges(comment!!)
-                .debounce(CLICKS_DEBOUNCE_RATE_MS, TimeUnit.MILLISECONDS)
+                .debounce(Constants.CLICKS_DEBOUNCE_RATE_MS, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(CharSequence::toString)
                 .subscribe({ value -> saveComment() })
@@ -97,7 +98,6 @@ class CommentDialogFragment : DialogFragment() {
         const val FRAGMENT_TAG = "com.example.tau.lab.fragments.CommentDialogFragment"
         private const val LOG_TAG = "CommentDialogFragment"
         private const val ANIMAL = "animal"
-        private const val CLICKS_DEBOUNCE_RATE_MS = 300L
 
         fun showDialog(fragmentManager: FragmentManager, animal: Animal, listener: Listener) {
             val transaction = fragmentManager.beginTransaction()

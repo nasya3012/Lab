@@ -5,11 +5,12 @@
 
     <string name="mammals">Млекопитающие</string>
     <string name="birds">Птицы</string>
-    <string name="open_buttons_activity">Открыть активность с кнопками</string>
-    <string name="open_view_pager_activity">Открыть активность с пагинатором</string>
+    <string name="open_buttons_activity">Открыть активность\n с кнопками</string>
+    <string name="open_view_pager_activity">Открыть активность\n с пагинатором</string>
     <string name="this_is_formatter" formatted="false">Не поверите, но это %s</string>
     <string name="you_can">Введите комментарий</string>
     <string name="traffic">Светофор</string>
+    <string name="converter">Конвертер</string>
     <string name="spinner">Spinner</string>
     <string name="selected">Выбран</string>
 
@@ -17,6 +18,14 @@
     <string name="yellow">Жёлтый</string>
     <string name="green">Зелёный</string>
 
+
+    <string name="rubles">В рублях</string>
+    <string name="dollars">В долларах</string>
+    <string name="buttonConvert_text">Конвертировать</string>
+    <string name="enter_convertible_unit">Введите конвертируемую единицу</string>
+    <string name="converted_value_rub_cop" formatted="false">Конвертированное значение: %d руб. %d коп.</string>
+    <string name="converted_value_usd_cent" formatted="false">Конвертированное значение: %d usd %d cent</string>
+    <string name="number_of_characters_entered">Возможно ввести только 8 символов</string>
 
     <string-array name="page_titles">
         <item>Млекопитающие</item>
