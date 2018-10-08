@@ -75,9 +75,9 @@ class ListFragment : Fragment() {
 
         fun newInstance(animalType: AnimalType): ListFragment {
             val fragment = ListFragment()
-            val type = Bundle()
-            type.putSerializable(ANIMAL_TYPE, animalType)
-            fragment.arguments = type
+            val args = Bundle()
+            args.putSerializable(ANIMAL_TYPE, animalType)
+            fragment.arguments = args
             return fragment
         }
     }

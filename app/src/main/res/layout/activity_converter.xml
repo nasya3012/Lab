@@ -1,42 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:background="@color/activity_color"
+    android:fitsSystemWindows="true"
     tools:context=".activities.ConverterActivity">
 
-    <EditText
-        android:id="@+id/amountToConvert"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="15sp"
-        android:inputType="numberDecimal|numberSigned"/>
+        android:layout_height="56dp"
+        android:background="@color/colorGreen89"/>
 
-    <RadioGroup
-        android:id="@+id/currency"
+    <FrameLayout
+        android:id="@+id/fragmentConverter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/radioButtonRubles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/rubles"/>
-
-        <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/radioButtonDollars"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dollars"/>
-    </RadioGroup>
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/buttonConverter"

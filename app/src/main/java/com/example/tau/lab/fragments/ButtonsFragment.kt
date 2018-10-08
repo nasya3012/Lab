@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.tau.lab.AnimalType
 import com.example.tau.lab.R
-import com.example.tau.lab.activities.TrafficActivity
 
 class ButtonsFragment : Fragment() {
 
@@ -62,10 +61,10 @@ class ButtonsFragment : Fragment() {
 
         fun newInstance(button1Text: String, button2Text: String): ButtonsFragment {
             val fragment = ButtonsFragment()
-            val findings = Bundle()
-            findings.putString(BUTTON_1_TEXT, button1Text)
-            findings.putString(BUTTON_2_TEXT, button2Text)
-            fragment.arguments = findings
+            val args = Bundle()
+            args.putString(BUTTON_1_TEXT, button1Text)
+            args.putString(BUTTON_2_TEXT, button2Text)
+            fragment.arguments = args
             return fragment
         }
     }

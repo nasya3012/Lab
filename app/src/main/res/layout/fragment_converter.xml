@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/activity_color"
+    tools:context=".fragments.ConverterFragment">
+
+    <EditText
+        android:id="@+id/amountToConvert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textSize="15sp"
+        android:inputType="numberDecimal|numberSigned"/>
+
+    <RadioGroup
+        android:id="@+id/currency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioButtonRubles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/rubles"/>
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioButtonDollars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dollars"/>
+    </RadioGroup>
+</LinearLayout>
