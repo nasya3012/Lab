@@ -4,37 +4,34 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.Button
 import android.widget.Toast
 import com.example.tau.lab.R
+import com.example.tau.lab.fragments.SpinnerFragment
 
-class SpinnerActivity : AppCompatActivity() {
+class SpinnerActivity : AppCompatActivity(),
+        SpinnerFragment.Listener{
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spinner)
-        val animalsArray = resources.getStringArray(R.array.page_titles)
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, animalsArray)
 
-        val animalsSpinner = findViewById<Spinner>(R.id.animalsSpinner)
-        animalsSpinner.adapter = adapter
-        animalsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, itemSelected: View, position: Int, selectedId: Long) {
-                Toast.makeText(this@SpinnerActivity, "selected position=$position", Toast.LENGTH_SHORT).show()
-            }
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(R.string.spinner)
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                Toast.makeText(this@SpinnerActivity, "nothing selected", Toast.LENGTH_SHORT).show()
-            }
-        }
-        findViewById<View>(R.id.button).setOnClickListener{
-            val spinner = findViewById<View>(R.id.animalsSpinner) as Spinner
-            Toast.makeText(applicationContext,"Ваш выбор: " + spinner.selectedItem.toString() +", позиция " + spinner.selectedItemPosition.toInt() , Toast.LENGTH_SHORT).show()
+        supportFragmentManager.beginTransaction()
+                .add(R.id.spinnerFrame, SpinnerFragment.newInstance(), SpinnerFragment.FRAGMENT_TAG)
+                .commit()
+        findViewById<Button>(R.id.button).setOnClickListener {
+            val fragment = supportFragmentManager.findFragmentByTag(SpinnerFragment.FRAGMENT_TAG) as SpinnerFragment?
+            showToast(fragment?.getSelectedItem())
         }
     }
+
+    override fun showToast(msg: String?) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+
 
     companion object {
         fun newInstance(context: Context) {
