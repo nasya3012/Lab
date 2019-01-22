@@ -35,8 +35,16 @@ class MainActivity : AppCompatActivity() {
             ConverterActivity.newInstance(this)
             true
         }
+        R.id.browser -> {
+            BrowserActivity.newInstance(this)
+            true
+        }
         R.id.spinner -> {
             SpinnerActivity.newInstance(this)
+            true
+        }
+        R.id.life -> {
+            LifeActivity.newInstance(this)
             true
         }
         else -> super.onOptionsItemSelected(item)

@@ -16,6 +16,16 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/browser"
+        android:title="@string/browser"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/life"
+        android:title="@string/life"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/spinner"
         android:title="@string/spinner"
         app:showAsAction="ifRoom"/>

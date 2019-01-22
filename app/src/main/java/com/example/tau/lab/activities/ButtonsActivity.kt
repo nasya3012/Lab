@@ -8,7 +8,6 @@ import com.example.tau.lab.AnimalType
 import com.example.tau.lab.FragmentsCoordinator
 import com.example.tau.lab.FragmentsCoordinatorImpl
 import com.example.tau.lab.R
-import com.example.tau.lab.fragments.AnimalDetailsFragment
 import com.example.tau.lab.fragments.ListFragment
 import com.example.tau.lab.fragments.ButtonsFragment
 import com.example.tau.lab.model.Animal

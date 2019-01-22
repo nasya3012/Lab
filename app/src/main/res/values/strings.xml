@@ -12,6 +12,11 @@
     <string name="traffic">Светофор</string>
     <string name="converter">Конвертер</string>
     <string name="spinner">Spinner</string>
+    <string name="browser">Browser</string>
+    <string name="life">Жизненный цикл</string>
+    <string name="from_gallery">Галерея</string>
+    <string name="from_web">Веб</string>
+    <string name="from_resource">Ресурсы</string>
     <string name="selected">Выбран</string>
 
     <string name="red">Красный</string>

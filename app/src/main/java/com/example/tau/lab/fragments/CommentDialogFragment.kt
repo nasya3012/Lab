@@ -1,5 +1,6 @@
 package com.example.tau.lab.fragments
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -53,6 +54,7 @@ class CommentDialogFragment : DialogFragment() {
         arguments?.let {animal = it.getParcelable(ANIMAL)}
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.dialog_comment, container, false)
 
